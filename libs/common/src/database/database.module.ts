@@ -11,4 +11,4 @@ import { MongooseModule } from '@nestjs/mongoose';
         inject: [ConfigService]
     })]
 })
-export class DatabaseModule {}
+export class DatabaseModule { }

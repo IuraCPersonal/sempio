@@ -11,4 +11,4 @@ import Joi from 'joi';
     providers: [ConfigService],
     exports: [ConfigService]
 })
-export class ConfigModule {}
+export class ConfigModule { }
