@@ -8,6 +8,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { RtStrategy } from './strategies/rt.strategy';
 
 @Module({
   imports: [
@@ -18,7 +19,9 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       validationSchema: Joi.object({
         MONGODB_URI: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
-        JWT_EXPIRATION: Joi.number().required(),
+        JWT_EXPIRATION: Joi.string().required(),
+        RT_SECRET: Joi.string().required(),
+        RT_EXPIRATION: Joi.string().required(),
         PORT: Joi.number(),
       }),
     }),
@@ -33,6 +36,6 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, RtStrategy],
 })
 export class AuthModule {}

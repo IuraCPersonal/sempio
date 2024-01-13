@@ -7,6 +7,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcryptjs';
 import { GetUserDto } from './dto/get-user.dto';
+import { Types } from 'mongoose';
+import { UserDocument } from './models/user.schema';
 
 @Injectable()
 /**
@@ -69,5 +71,18 @@ export class UsersService {
    */
   async getUser(getUserDto: GetUserDto) {
     return this.usersRepository.findOne(getUserDto);
+  }
+
+  /**
+   * Finds a user by ID and updates their information.
+   * @param userId - The ID of the user.
+   * @param update - The partial data to update.
+   * @returns A promise that resolves to the updated user.
+   */
+  async findOneAndUpdate(
+    userId: Types.ObjectId,
+    update: Partial<UserDocument>,
+  ): Promise<UserDocument | null> {
+    return this.usersRepository.findOneAndUpdate({ _id: userId }, update);
   }
 }

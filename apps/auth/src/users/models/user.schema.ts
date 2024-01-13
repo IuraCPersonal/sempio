@@ -17,6 +17,9 @@ export class UserDocument extends AbstractDocument {
     description: 'The password of the user',
   })
   password: string;
+
+  @Prop()
+  hashedRt?: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserDocument);
