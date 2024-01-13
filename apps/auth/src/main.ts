@@ -6,8 +6,6 @@ import { ConfigService } from '@nestjs/config';
 import * as cookieParser from 'cookie-parser';
 import { Transport } from '@nestjs/microservices';
 
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-
 async function bootstrap() {
   const app = await NestFactory.create(AuthModule);
   app.connectMicroservice({
@@ -16,16 +14,6 @@ async function bootstrap() {
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useLogger(app.get(Logger));
-
-  const config = new DocumentBuilder()
-    .setTitle('Sempio API')
-    .setDescription('Authentication Microservice API')
-    .setVersion('1.0')
-    .addTag('auth')
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
 
   const configService = app.get(ConfigService);
   await app.startAllMicroservices();

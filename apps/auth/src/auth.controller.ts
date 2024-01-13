@@ -1,7 +1,6 @@
 import { Response } from 'express';
 import { MessagePattern } from '@nestjs/microservices';
 import { Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
@@ -11,7 +10,6 @@ import { UserDocument } from './users/models/user.schema';
 import { RtGuard } from './guards/rt-auth.guard';
 
 @Controller('api/auth')
-@ApiTags('auth')
 /**
  * Controller responsible for handling authentication-related requests.
  */
@@ -20,11 +18,6 @@ export class AuthController {
 
   @Post('login')
   @UseGuards(LocalAuthGuard)
-  @ApiOperation({ summary: 'Login a user' })
-  @ApiBody({ type: UserDocument })
-  @ApiResponse({ status: 200, description: 'User logged in successfully.' })
-  @ApiResponse({ status: 401, description: 'Invalid credentials.' })
-  @ApiResponse({ status: 404, description: 'Document not found.' })
   async login(
     @CurrentUser() user: UserDocument,
     @Res({ passthrough: true }) response: Response,
@@ -40,13 +33,6 @@ export class AuthController {
 
   @Post('refresh')
   @UseGuards(RtGuard, JwtAuthGuard)
-  @ApiOperation({ summary: 'Refresh the access and refresh tokens.' })
-  @ApiBody({ type: UserDocument })
-  @ApiResponse({
-    status: 201,
-    description: 'Tokens refreshed successfully.',
-  })
-  @ApiResponse({ status: 401, description: 'Invalid credentials.' })
   async refreshTokens(
     @CurrentUser() user: UserDocument,
     @Req() request: any,
