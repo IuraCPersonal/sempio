@@ -20,6 +20,9 @@ export class UserDocument extends AbstractDocument {
 
   @Prop()
   hashedRt?: string;
+
+  @Prop()
+  roles?: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserDocument);
