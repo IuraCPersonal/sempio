@@ -9,3 +9,5 @@ steps:
         'apps/auth/Dockerfile',
         '.',
       ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'europe-central2-docker.pkg.dev/sempio-dev/auth/production']
