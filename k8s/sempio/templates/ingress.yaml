@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sempio
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api/auth/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: auth-http
+                port:
+                  number: 3003
