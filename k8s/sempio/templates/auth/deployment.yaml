@@ -17,3 +17,24 @@ spec:
       containers:
         - image: europe-central2-docker.pkg.dev/sempio-dev/auth/production
           name: auth
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb
+                  key: connectionString
+            - name: JWT_SECRET
+              value: Ad76kOylO3iFt9GPKU0z7M1MiVNtDIRPiBjM3hBPNkF7tQLT17Wx6ns3MkySnhAQ
+            - name: JWT_EXPIRATION
+              value: 15m
+            - name: RT_SECRET
+              value: 3dwaq1ed2rf3tgy4huj5ik6ol7p8ok9ij8uh7yg6tf5rd4es3wa2q1
+            - name: RT_EXPIRATION
+              value: 7d
+            - name: TCP_PORT
+              value: '3002'
+            - name: HTTP_PORT
+              value: '3003'
+          ports:
+            - containerPort: 3002
+            - containerPort: 3003
