@@ -6,7 +6,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api/auth/*
+          - path: /auth/*
             pathType: ImplementationSpecific
             backend:
               service:

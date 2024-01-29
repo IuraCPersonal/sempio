@@ -4,8 +4,9 @@ import { UsersService } from './users.service';
 import { CurrentUser } from '../decorators';
 import { UserDocument } from './models/user.schema';
 import { JwtAuthGuard } from '../guards/jwt-auth.guard';
+import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller('api/users')
+@Controller('users')
 /**
  * Controller for managing users.
  */
@@ -30,5 +31,19 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   async getUser(@CurrentUser() currentUser: UserDocument) {
     return currentUser;
+  }
+
+  /**
+   * Update user.
+   * @param updateUserDto - The data for updating a user.
+   * @returns The updated user.
+   */
+  @Post('update')
+  @UseGuards(JwtAuthGuard)
+  async updateUser(
+    @CurrentUser() currentUser: UserDocument,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    return this.usersService.findOneAndUpdate(currentUser._id, updateUserDto);
   }
 }

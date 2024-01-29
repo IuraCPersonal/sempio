@@ -9,7 +9,7 @@ import { CurrentUser } from './decorators';
 import { UserDocument } from './users/models/user.schema';
 import { RtGuard } from './guards/rt-auth.guard';
 
-@Controller('api/auth')
+@Controller('auth')
 /**
  * Controller responsible for handling authentication-related requests.
  */
