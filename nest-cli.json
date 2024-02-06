@@ -25,6 +25,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/auth/tsconfig.app.json"
       }
+    },
+    "services": {
+      "type": "application",
+      "root": "apps/services",
+      "entryFile": "main",
+      "sourceRoot": "apps/services/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/services/tsconfig.app.json"
+      }
     }
   },
   "monorepo": true,
