@@ -23,3 +23,10 @@ spec:
                 name: auth-http
                 port:
                   number: 3003
+          - path: /swagger
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: auth-http
+                port:
+                  number: 3003
