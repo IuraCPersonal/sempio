@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { MessagePattern } from '@nestjs/microservices';
-import { Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
@@ -18,6 +18,11 @@ import { CreateUserDto } from './users/dto/create-user.dto';
  */
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @Get('hello')
+  async hello() {
+    return 'Hello World!';
+  }
 
   @Post('login')
   @UseGuards(LocalAuthGuard)
