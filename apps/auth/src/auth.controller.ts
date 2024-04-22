@@ -8,7 +8,10 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { CurrentUser } from './decorators';
 import { UserDocument } from './users/models/user.schema';
 import { RtGuard } from './guards/rt-auth.guard';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { CreateUserDto } from './users/dto/create-user.dto';
 
+@ApiTags('auth')
 @Controller('auth')
 /**
  * Controller responsible for handling authentication-related requests.
@@ -18,6 +21,31 @@ export class AuthController {
 
   @Post('login')
   @UseGuards(LocalAuthGuard)
+  @ApiOperation({
+    summary: 'Log in a user',
+    description: 'Logs in a user and returns the user details.',
+  })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        email: {
+          type: 'string',
+          example: 'example@mail.com',
+        },
+        password: {
+          type: 'string',
+          example: '112233Api!',
+        },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'The user has been successfully logged in.',
+    type: UserDocument, // Ensure `UserDocument` correctly describes the shape of the response object
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized.' })
   async login(
     @CurrentUser() user: UserDocument,
     @Res({ passthrough: true }) response: Response,

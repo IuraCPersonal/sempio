@@ -5,7 +5,9 @@ import { CurrentUser } from '../decorators';
 import { UserDocument } from './models/user.schema';
 import { JwtAuthGuard } from '../guards/jwt-auth.guard';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 /**
  * Controller for managing users.
@@ -19,6 +21,13 @@ export class UsersController {
    * @returns The created user.
    */
   @Post()
+  @ApiOperation({
+    summary: 'Create a new user',
+    description: 'Creates a new user and returns the user details.',
+  })
+  @ApiBody({
+    type: CreateUserDto,
+  })
   async createUser(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
