@@ -5,10 +5,16 @@ import { Logger } from 'nestjs-pino';
 import { ConfigService } from '@nestjs/config';
 import * as cookieParser from 'cookie-parser';
 import { Transport } from '@nestjs/microservices';
+import { SwaggerModule } from '@nestjs/swagger';
+import { CommonSwaggerModule } from '@app/common/swagger/swagger.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AuthModule);
   const configService = app.get(ConfigService);
+
+  const document = CommonSwaggerModule.createDocument(app);
+  SwaggerModule.setup('swagger', app, document);
+
   app.connectMicroservice({
     transport: Transport.TCP,
     options: {
