@@ -15,14 +15,11 @@ spec:
         app: auth
     spec:
       containers:
-        - image: europe-central2-docker.pkg.dev/sempio-dev/auth/production
+        - image: 851725477831.dkr.ecr.eu-north-1.amazonaws.com/auth:latest
           name: auth
           env:
             - name: MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: mongodb
-                  key: connectionString
+              value: mongodb+srv://root:toor@sempio-dev-api.cnbslww.mongodb.net/sempio
             - name: JWT_SECRET
               value: Ad76kOylO3iFt9GPKU0z7M1MiVNtDIRPiBjM3hBPNkF7tQLT17Wx6ns3MkySnhAQ
             - name: JWT_EXPIRATION
