@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { PhoenixService } from './phoenix.service';
 
-@Controller()
+@Controller('services')
 export class PhoenixController {
   constructor(private readonly phoenixService: PhoenixService) {}
 
