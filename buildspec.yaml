@@ -8,6 +8,10 @@ phases:
     commands:
       - docker build -t auth -f ./apps/auth/Dockerfile .
       - docker tag auth:latest 851725477831.dkr.ecr.eu-north-1.amazonaws.com/auth:latest
+
+      - docker build -t phoenix -f ./apps/phoenix/Dockerfile .
+      - docker tag phoenix:latest 851725477831.dkr.ecr.eu-north-1.amazonaws.com/phoenix:latest
   post_build:
     commands:
       - docker push 851725477831.dkr.ecr.eu-north-1.amazonaws.com/auth:latest
+      - docker push 851725477831.dkr.ecr.eu-north-1.amazonaws.com/phoenix:latest
