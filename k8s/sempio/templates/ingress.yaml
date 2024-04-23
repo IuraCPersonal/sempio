@@ -23,10 +23,10 @@ spec:
                 name: auth-http
                 port:
                   number: 3003
-          - path: /swagger
+          - path: /services/*
             pathType: ImplementationSpecific
             backend:
               service:
-                name: auth-http
+                name: phoenix
                 port:
-                  number: 3003
+                  number: 4000

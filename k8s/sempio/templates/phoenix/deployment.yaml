@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: phoenix
+  name: phoenix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phoenix
+  template:
+    metadata:
+      labels:
+        app: phoenix
+    spec:
+      containers:
+        - image: 851725477831.dkr.ecr.eu-north-1.amazonaws.com/phoenix:latest
+          name: phoenix
+          env:
+            - name: HTTP_PORT
+              value: '4000'
+          ports:
+            - containerPort: 4000

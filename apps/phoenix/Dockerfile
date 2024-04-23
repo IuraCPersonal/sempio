@@ -4,14 +4,18 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY tsconfig.json tsconfig.json
+COPY nest-cli.json nest-cli.json
 
 RUN npm install -g pnpm
 
-RUN pnpm install
 
-COPY . .
+COPY apps/phoenix apps/phoenix
+COPY libs libs
 
-RUN pnpm run build
+RUN pnpm install -r
+
+RUN pnpm run build phoenix
 
 FROM node:alpine as production
 
@@ -29,4 +33,4 @@ RUN pnpm install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ["node", "dist/apps/auth/main"]
+CMD ["node", "dist/apps/phoenix/main"]
