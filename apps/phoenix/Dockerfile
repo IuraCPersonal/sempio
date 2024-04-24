@@ -9,7 +9,6 @@ COPY nest-cli.json nest-cli.json
 
 RUN npm install -g pnpm
 
-
 COPY apps/phoenix apps/phoenix
 COPY libs libs
 
