@@ -16,17 +16,17 @@ spec:
                 name: auth-http
                 port:
                   number: 3003
-          - path: /users
+          - path: /users/*
             pathType: ImplementationSpecific
             backend:
               service:
                 name: auth-http
                 port:
                   number: 3003
-          - path: /services/*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: phoenix
-                port:
-                  number: 4000
+          # - path: /services/*
+          #   pathType: ImplementationSpecific
+          #   backend:
+          #     service:
+          #       name: phoenix
+          #       port:
+          #         number: 4000
