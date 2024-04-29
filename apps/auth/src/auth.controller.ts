@@ -9,7 +9,6 @@ import { CurrentUser } from './decorators';
 import { UserDocument } from './users/models/user.schema';
 import { RtGuard } from './guards/rt-auth.guard';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreateUserDto } from './users/dto/create-user.dto';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -18,12 +17,6 @@ import { CreateUserDto } from './users/dto/create-user.dto';
  */
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
-
-  @Get('hello')
-  async hello() {
-    return 'Hello World!';
-  }
-
   @Post('login')
   @UseGuards(LocalAuthGuard)
   @ApiOperation({
@@ -48,7 +41,7 @@ export class AuthController {
   @ApiResponse({
     status: 200,
     description: 'The user has been successfully logged in.',
-    type: UserDocument, // Ensure `UserDocument` correctly describes the shape of the response object
+    type: UserDocument,
   })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   async login(

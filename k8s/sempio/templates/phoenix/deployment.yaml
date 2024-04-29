@@ -15,7 +15,7 @@ spec:
         app: phoenix
     spec:
       containers:
-        - image: 851725477831.dkr.ecr.eu-north-1.amazonaws.com/phoenix:latest
+        - image: 851725477831.dkr.ecr.eu-west-1.amazonaws.com/phoenix:latest
           name: phoenix
           env:
             - name: HTTP_PORT
