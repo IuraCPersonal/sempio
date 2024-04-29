@@ -20,5 +20,7 @@ spec:
           env:
             - name: HTTP_PORT
               value: '4000'
+            - name: MONGODB_URI
+              value: mongodb+srv://root:toor@sempio-dev-api.cnbslww.mongodb.net/phoenix
           ports:
             - containerPort: 4000
