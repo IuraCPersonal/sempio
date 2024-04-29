@@ -40,6 +40,7 @@ export class AuthService {
       httpOnly: true,
       expires,
       sameSite: 'none',
+      domain: 'localhost',
     });
 
     // response.cookie('Refresh', tokens.refresh_token, {
