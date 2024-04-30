@@ -15,38 +15,47 @@ export class UpdateUserDto {
   })
   roles?: string[];
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   firstName: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   lastName: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   birthDate: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   phoneNumber: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   country: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   region: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   city: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   postalCode: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   @IsOptional()
