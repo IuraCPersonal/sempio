@@ -38,14 +38,11 @@ export class AuthService {
     // Set the authentication token in the response cookie.
     response.cookie('Authentication', tokens.access_token, {
       httpOnly: true,
-      expires,
-      sameSite: 'none',
-      domain: 'localhost',
     });
 
-    // response.cookie('Refresh', tokens.refresh_token, {
-    //   httpOnly: true,
-    // });
+    response.cookie('Refresh', tokens.refresh_token, {
+      httpOnly: true,
+    });
 
     return tokens;
   }
@@ -75,18 +72,12 @@ export class AuthService {
       throw new ForbiddenException('Access Denied');
     }
 
-    const expires = new Date();
-    expires.setSeconds(
-      expires.getSeconds() + this.configSerice.get<number>('JWT_EXPIRATION'),
-    );
-
     const tokens = await this.getTokens(user._id, user.email);
     await this.updateRtHash(user._id, tokens.refresh_token);
 
     // Set the authentication token in the response cookie.
     response.cookie('Authentication', tokens.access_token, {
       httpOnly: true,
-      expires,
     });
 
     response.cookie('Refresh', tokens.refresh_token, {
