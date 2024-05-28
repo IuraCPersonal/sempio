@@ -1,19 +1,4 @@
 services:
-  phoenix:
-    hostname: phoenix
-    container_name: phoenix
-    build:
-      context: .
-      dockerfile: ./apps/phoenix/Dockerfile
-      target: development
-    command: pnpm run start:dev phoenix
-    env_file:
-      - ./apps/phoenix/.env
-    ports:
-      - '4000:4000'
-    volumes:
-      - .:/usr/src/app
-
   auth:
     hostname: auth
     container_name: auth

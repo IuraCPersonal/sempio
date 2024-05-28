@@ -12,15 +12,6 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
-    "phoenix": {
-      "type": "application",
-      "root": "apps/phoenix",
-      "entryFile": "main",
-      "sourceRoot": "apps/phoenix/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/phoenix/tsconfig.app.json"
-      }
-    },
     "auth": {
       "type": "application",
       "root": "apps/auth",
@@ -28,6 +19,42 @@
       "sourceRoot": "apps/auth/src",
       "compilerOptions": {
         "tsConfigPath": "apps/auth/tsconfig.app.json"
+      }
+    },
+    "jobs": {
+      "type": "application",
+      "root": "apps/jobs",
+      "entryFile": "main",
+      "sourceRoot": "apps/jobs/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/jobs/tsconfig.app.json"
+      }
+    },
+    "orders": {
+      "type": "application",
+      "root": "apps/orders",
+      "entryFile": "main",
+      "sourceRoot": "apps/orders/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/orders/tsconfig.app.json"
+      }
+    },
+    "payments": {
+      "type": "application",
+      "root": "apps/payments",
+      "entryFile": "main",
+      "sourceRoot": "apps/payments/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/payments/tsconfig.app.json"
+      }
+    },
+    "expiration": {
+      "type": "application",
+      "root": "apps/expiration",
+      "entryFile": "main",
+      "sourceRoot": "apps/expiration/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/expiration/tsconfig.app.json"
       }
     }
   },
