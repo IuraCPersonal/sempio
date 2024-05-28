@@ -1,0 +1,19 @@
+apiVersion: skaffold/v4beta10
+kind: Config
+metadata:
+  name: swift-services
+build:
+  local:
+    push: false
+  artifacts:
+    - image: iuracpersonal/auth
+      context: .
+      docker:
+        dockerfile: apps/auth/Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+manifests:
+  rawYaml:
+    - k8s/sempio/templates/*
