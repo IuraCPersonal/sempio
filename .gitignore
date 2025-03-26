@@ -1,0 +1,11 @@
+*~
+*.swp
+node_modules
+dist
+.env
+.devcontainer
+.vscode
+*.tsbuildinfo
+.cache
+.nvmrc
+.node-version

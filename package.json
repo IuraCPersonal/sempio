@@ -1,0 +1,13 @@
+{
+  "name": "sempio-monorepo",
+  "version": "0.0.1",
+  "type": "module",
+  "packageManager": "pnpm@9.4.0",
+  "private": "true",
+  "scripts": {
+    "dev": "pnpm -r --filter='./packages/*' run dev"
+  },
+  "devDependencies": {
+    "sempio": "workspace:*"
+  }
+}

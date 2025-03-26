@@ -1,0 +1,42 @@
+{
+  "name": "sempio",
+  "description": "Minimal React Framework",
+  "version": "0.0.1",
+  "type": "module",
+  "author": "IuraCPersonal",
+  "keywords": [
+    "react",
+    "ramework"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IuraCPersonal/sempio.git",
+    "directory": "packages/waku"
+  },
+  "bin": {
+    "sempio": "./cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "swc src -d dist -w --strip-leading-paths",
+    "compile:code": "swc src -d dist --strip-leading-paths"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "^22.7.0 || ^20.8.0 || ^18.17.0"
+  },
+  "dependencies": {
+    "@swc/core": "^1.11.13"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.6.0",
+    "chokidar": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "~19.0.0",
+    "react-dom": "~19.0.0",
+    "react-server-dom-webpack": "~19.0.0"
+  }
+}
