@@ -1,10 +1,33 @@
 import { serve } from "@hono/node-server";
+import * as dotenv from "dotenv";
 import { Hono } from "hono";
+import { parseArgs } from "node:util";
 
-const app = new Hono();
+dotenv.config({ path: [".env.local", ".env"] });
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
+const { positionals } = parseArgs({
+  args: process.argv.slice(2),
+  allowPositionals: true,
 });
 
-serve(app);
+const cmd = positionals[0];
+
+switch (cmd) {
+  case "dev":
+    console.log("Starting dev");
+    await runDev();
+    break;
+  default:
+    if (cmd) {
+      console.error("Unknown command:", cmd);
+    }
+    break;
+}
+
+async function runDev() {
+  const app = new Hono();
+
+  app.get("/", (c) => c.text("Hello Node.js!"));
+
+  serve(app);
+}
